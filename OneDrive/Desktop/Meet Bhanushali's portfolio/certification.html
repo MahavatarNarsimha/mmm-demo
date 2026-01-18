@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certification Center | Meet Bhanushali</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Terminal Overlay Styles --- */
+        #cert-terminal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #0d0d0d;
+            color: #00ff00;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-family: 'Courier New', Courier, monospace;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .terminal-content {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .log-line {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: block;
+            opacity: 0; /* Hidden initially */
+            animation: fadeIn 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Loading Bar */
+        .loading-container {
+            width: 100%;
+            height: 4px;
+            background: #333;
+            margin-top: 20px;
+            border-radius: 2px;
+            display: none; /* Hidden initially */
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #00ff00;
+            transition: width 0.1s linear;
+        }
+
+        /* Typing Text */
+        .ai-message {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            min-height: 24px;
+        }
+
+        /* Main Content hidden initially */
+        #main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            display: none; /* Completely hide structure */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cert-terminal">
+        <div class="terminal-content">
+            <div id="log-container"></div>
+            
+            <div class="loading-container" id="loader">
+                <div class="progress-bar" id="progress"></div>
+            </div>
+
+            <div class="ai-message">
+                <span id="typewriter-text"></span><span class="cursor">|</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content">
+        
+        <header class="cert-header">
+            <div class="container">
+                <h1>Certification Center</h1>
+                <p class="tagline">Verified Credentials & Achievements Vault</p>
+                <a href="index.html" class="back-link">← Return to Main Profile</a>
+            </div>
+        </header>
+
+        <div class="container">
+            
+            <div class="ai-alert">
+                <span class="pulse-dot"></span>
+                System Message: "Secure connection established. Documents are ready."
+            </div>
+
+            <div class="cert-grid">
+                
+                <div class="cert-card">
+                    <div class="pdf-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v2.5zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    </div>
+                    <h3>Ethical Hacking</h3>
+                    <p class="issuer">Issued by: Boston Institute of Analytics</p>
+                    <a href="ethical hacking.png" class="view-btn">View Document</a>
+                </div>
+
+                <div class="cert-card">
+                    <div class="pdf-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v2.5zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    </div>
+                    <h3>CyberSecurity</h3>
+                    <p class="issuer">Issued by: Boston Institute of Analytics</p>
+                    <a href="cyber security.png" class="view-btn">View Document</a>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="pdf-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v2.5zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    </div>
+                    <h3>Google Ads</h3>
+                    <p class="issuer">Issued by: Udemy</p>
+                    <a href="google ads.pdf" class="view-btn">View Document</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center;">
+                <a href="https://www.fiverr.com/YOUR_USERNAME" target="_blank" class="social-box fiverr bounce-effect" style="display: inline-flex;">
+                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1 17H9v-5h2v5zm-1-6H9V9h2v2zm5 6h-2v-2.5c0-.83-.67-1.5-1.5-1.5S11 11.67 11 12.5V17h-2v-5h2v.5c.3-.6 1-1.5 2.5-1.5 1.66 0 3 1.34 3 3V17z"/></svg>
+                    <span>Hire me on Fiverr</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // --- DATA ---
+            const logLines = [
+                "> Establishing secure connection...",
+                "> Connecting to Credentials Database...",
+                "> Verifying digital signatures...",
+                "> Decrypting documents...",
+                ">Second layer breach initiated...",
+                "> ACCESS GRANTED."
+            ];
+            const aiText = "Welcome to the Vault. All certificates verified.";
+
+            // --- ELEMENTS ---
+            const logContainer = document.getElementById('log-container');
+            const loader = document.getElementById('loader');
+            const progressBar = document.getElementById('progress');
+            const typeWriterElement = document.getElementById('typewriter-text');
+            const terminalScreen = document.getElementById('cert-terminal');
+            const mainContent = document.getElementById('main-content');
+
+            // --- STEP 1: LOG LINES ---
+            let lineIndex = 0;
+            function showNextLog() {
+                if (lineIndex < logLines.length) {
+                    const p = document.createElement('div');
+                    p.classList.add('log-line');
+                    p.innerText = logLines[lineIndex];
+                    logContainer.appendChild(p);
+                    lineIndex++;
+                    setTimeout(showNextLog, 500); // 0.5s per line
+                } else {
+                    // Logs done, start progress bar
+                    setTimeout(startProgressBar, 200);
+                }
+            }
+
+            // --- STEP 2: PROGRESS BAR ---
+            function startProgressBar() {
+                loader.style.display = 'block';
+                let width = 0;
+                const interval = setInterval(() => {
+                    if (width >= 100) {
+                        clearInterval(interval);
+                        setTimeout(startTyping, 300);
+                    } else {
+                        width += 2; // Speed
+                        progressBar.style.width = width + '%';
+                    }
+                }, 20); // Fast fill
+            }
+
+            // --- STEP 3: TYPEWRITER ---
+            let charIndex = 0;
+            function startTyping() {
+                if (charIndex < aiText.length) {
+                    typeWriterElement.textContent += aiText.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(startTyping, 30);
+                } else {
+                    // Done, reveal content
+                    setTimeout(revealContent, 1000);
+                }
+            }
+
+            // --- STEP 4: REVEAL ---
+            function revealContent() {
+                // Fade out terminal
+                terminalScreen.style.opacity = '0';
+                
+                // Show content (display block first, then opacity)
+                mainContent.style.display = 'block';
+                
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                    // Remove terminal to prevent clicking issues
+                    setTimeout(() => {
+                        terminalScreen.style.display = 'none';
+                    }, 800);
+                }, 100);
+            }
+
+            // Start the sequence immediately
+            showNextLog();
+        });
+    </script>
+</body>
+</html>
